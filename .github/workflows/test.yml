@@ -27,6 +27,9 @@ jobs:
       - name: Install ncc
         run: npm --location=global install ncc
 
+      - name: Paths
+        run: ls -al /opt/hostedtoolcache/node/16.15.1/x64/lib/node_modules/ncc
+
       - name: Generate unified release files with ncc
         run: |
           /opt/hostedtoolcache/node/16.15.1/x64/lib/node_modules/ncc build src/terraform.js -o dist/terraform -m

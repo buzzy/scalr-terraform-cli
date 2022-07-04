@@ -30,8 +30,8 @@ jobs:
       - name: Check path
         run: |
           npm list -g
-          ls -al /opt/hostedtoolcache/node/16.15.1/x64/lib
-          ls -al /opt/hostedtoolcache/node/16.15.1/x64
+          ls -al /opt/hostedtoolcache/node/16.15.1/x64/lib/node_modules
+          ls -al /opt/hostedtoolcache/node/16.15.1/x64/bin
 
       - name: Generate unified release files with ncc
         run: |

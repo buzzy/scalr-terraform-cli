@@ -25,7 +25,13 @@ jobs:
         run: npm clean-install
 
       - name: Install ncc
-        run: npm -g install ncc
+        run: npm --location=global install ncc
+
+      - name: Check path
+        run: |
+          ls -al /usr/local/bin
+          which ncc
+          whereis ncc
 
       - name: Generate unified release files with ncc
         run: |
@@ -43,6 +49,7 @@ jobs:
   test:
     name: Test
     runs-on: ${{ matrix.os }}
+    needs: build
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]    

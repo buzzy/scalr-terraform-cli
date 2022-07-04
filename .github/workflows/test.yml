@@ -16,10 +16,10 @@ jobs:
         with:
           ref: 'test'
 
-      - name: Install Node.js 16.x
+      - name: Install Node.js 16.15.1
         uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '16.15.1'
 
       - name: Install dependencies
         run: npm clean-install
@@ -30,6 +30,8 @@ jobs:
       - name: Check path
         run: |
           npm list -g
+          ls -al /opt/hostedtoolcache/node/16.15.1/x64/lib
+          ls -al /opt/hostedtoolcache/node/16.15.1/x64
 
       - name: Generate unified release files with ncc
         run: |

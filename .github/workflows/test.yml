@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: 'test'
+          ref: ${{ github.head_ref }}
 
       - name: Install Node.js 16.15.1
         uses: actions/setup-node@v3
@@ -27,9 +27,6 @@ jobs:
       - name: Install ncc
         run: npm --location=global install ncc
 
-      - name: Paths
-        run: ls -al /opt/hostedtoolcache/node/16.15.1/x64/lib/node_modules/ncc/lib
-
       - name: Generate unified release files with ncc
         run: |
           node /opt/hostedtoolcache/node/16.15.1/x64/lib/node_modules/ncc/index.js build src/terraform.js -o dist/terraform -m
@@ -37,6 +34,8 @@ jobs:
 
       - name: Push to Github test tag
         run: |
+          git config --global user.email "github@scalr.com"
+          git config --global user.name "Github Action"
           git add dist/*
           git update-index --chmod=+x dist/wrapper/index.js
           git commit -m "Auto test build"

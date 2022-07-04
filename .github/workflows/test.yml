@@ -32,8 +32,8 @@ jobs:
 
       - name: Generate unified release files with ncc
         run: |
-          /opt/hostedtoolcache/node/16.15.1/x64/lib/node_modules/ncc/index.js build src/terraform.js -o dist/terraform -m
-          /opt/hostedtoolcache/node/16.15.1/x64/lib/node_modules/ncc/index.js build src/wrapper.js -o dist/wrapper -m
+          node /opt/hostedtoolcache/node/16.15.1/x64/lib/node_modules/ncc/index.js build src/terraform.js -o dist/terraform -m
+          node /opt/hostedtoolcache/node/16.15.1/x64/lib/node_modules/ncc/index.js build src/wrapper.js -o dist/wrapper -m
 
       - name: Push to Github test tag
         run: |

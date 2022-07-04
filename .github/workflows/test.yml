@@ -25,13 +25,11 @@ jobs:
         run: npm clean-install
 
       - name: Install ncc
-        run: npm --location=global install ncc --loglevel verbose
+        run: npm --location=global install ncc
 
       - name: Check path
         run: |
-          ls -al /usr/local/bin
-          which ncc
-          whereis ncc
+          npm list -g
 
       - name: Generate unified release files with ncc
         run: |

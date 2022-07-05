@@ -25,12 +25,12 @@ jobs:
         run: npm clean-install
 
       - name: Install ncc
-        run: npm --location=global install ncc
+        run: npm --location=global install @vercel/ncc
 
       - name: Generate unified release files with ncc
         run: |
-          node /opt/hostedtoolcache/node/16.15.1/x64/lib/node_modules/ncc/index.js build src/terraform.js -o dist/terraform -m
-          node /opt/hostedtoolcache/node/16.15.1/x64/lib/node_modules/ncc/index.js build src/wrapper.js -o dist/wrapper -m
+          ncc build src/terraform.js -o dist/terraform -m
+          ncc build src/wrapper.js -o dist/wrapper -m
 
       - name: Push to Github test tag
         run: |
